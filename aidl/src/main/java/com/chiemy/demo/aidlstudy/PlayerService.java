@@ -34,7 +34,6 @@ public class PlayerService extends Service {
 
         @Override
         public void current(Music music) throws RemoteException {
-            music = new Music();
             music.setName("name:test");
             music.setUrl("url:test");
         }

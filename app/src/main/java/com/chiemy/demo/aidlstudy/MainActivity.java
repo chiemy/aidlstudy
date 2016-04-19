@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chiemy.demo.aidl.Calculator;
 import com.chiemy.demo.aidl.Player;
@@ -94,7 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 calculate();
                 break;
             case R.id.btn_play:
-                play();
+                //play();
+                current();
                 break;
             case R.id.btn_next:
                 next();
@@ -124,6 +126,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         music.setName("My Song");
         try {
             player.play(music);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void current() {
+        Music music = new Music();
+        music.setName("Test");
+        try {
+            player.current(music);
+            if (music != null){
+                Toast.makeText(this, music.getName(), Toast.LENGTH_SHORT).show();
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
         }
