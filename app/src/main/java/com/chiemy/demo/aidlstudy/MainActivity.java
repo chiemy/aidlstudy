@@ -135,8 +135,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Music music = new Music();
         music.setName("Test");
         try {
+            // current方法接收的参数是out类型，内部对music的name进行了修改
+            // music的name就不是最初的"Test"了
             player.current(music);
             if (music != null){
+                // 此时显示的是current方法内部修改的值
                 Toast.makeText(this, music.getName(), Toast.LENGTH_SHORT).show();
             }
         } catch (RemoteException e) {
